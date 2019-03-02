@@ -46,3 +46,10 @@ stages:
   - test
   - name: release
     if: type != pull_request AND repo = "raniejade/termkolors"
+
+notifications:
+  email:
+    recipients:
+      - raniejaderamiso@gmail.com
+    on_success: never
+    on_failure: always
