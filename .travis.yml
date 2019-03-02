@@ -3,7 +3,8 @@ branches:
 
 jobs:
   include:
-    - os: linux
+    - stage: test
+      os: linux
       language: java
       jdk: openjdk11
       script:
@@ -22,3 +23,26 @@ jobs:
       script:
         - powershell -ExecutionPolicy Unrestricted -f "ci/check.ps1"
 
+    - stage: release
+      os: linux
+      language: java
+      jdk: openjdk11
+      script: ./gradlew bintrayUpload
+
+    - os: osx
+      language: java
+      jdk: openjdk11
+      script: ./gradlew bintrayUpload
+
+    - os: windows
+      language: shell
+      install:
+        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
+      script:
+        - powershell -ExecutionPolicy Unrestricted -f "ci/release.ps1"
+
+
+stages:
+  - test
+  - name: release
+    if: type != pull_request AND repo = "raniejade/termkolors"
