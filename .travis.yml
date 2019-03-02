@@ -18,12 +18,7 @@ jobs:
     - os: windows
       language: shell
       install:
-        - powershell
-        - >
-          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-          Invoke-Expression (
-            Invoke-WebRequest https://github.com/shyiko/jabba/raw/master/install.ps1 -UseBasicParsing
-          ).Content
+        - powershell -f "ci/jabba.ps1"
       before_script:
         - jabba install zulu@1.11.0-2
         - jabba use zulu@1.11.0-2
