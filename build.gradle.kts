@@ -3,10 +3,10 @@ import org.gradle.jvm.tasks.Jar
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
+    id("org.ajoberstar.reckon") version "0.9.0"
     kotlin("multiplatform") version "1.3.21"
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.4"
-    id("org.ajoberstar.reckon") version "0.9.0"
 }
 
 group = "com.github.raniejade"
@@ -14,6 +14,12 @@ group = "com.github.raniejade"
 repositories {
     jcenter()
 }
+
+reckon {
+    scopeFromProp()
+    stageFromProp("alpha", "final")
+}
+
 
 kotlin {
     val configureNativeTarget: KotlinNativeTarget.() -> Unit = {
@@ -35,11 +41,6 @@ kotlin {
             }
         }
     }
-}
-
-reckon {
-    scopeFromProp()
-    stageFromProp("alpha", "final")
 }
 
 tasks {
