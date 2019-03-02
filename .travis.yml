@@ -19,9 +19,9 @@ jobs:
     - os: windows
       language: shell
       install:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
+        - powershell -Verbose -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
       script:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/check.ps1"
+        - powershell -Verbose -ExecutionPolicy Unrestricted -f "ci/check.ps1"
 
     - stage: release
       os: linux
@@ -37,9 +37,9 @@ jobs:
     - os: windows
       language: shell
       install:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
+        - powershell -Verbose -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
       script:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/release.ps1"
+        - powershell -Verbose -ExecutionPolicy Unrestricted -f "ci/release.ps1"
 
 
 stages:
