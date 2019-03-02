@@ -19,8 +19,6 @@ jobs:
       language: shell
       install:
         - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
-      before_script:
-        - jabba install zulu@1.11.0-2
-        - jabba use zulu@1.11.0-2
-      script: ./gradlew mingwX64Test
+      script:
+        - powershell -ExecutionPolicy Unrestricted -f "ci/check.ps1"
 
