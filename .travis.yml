@@ -14,8 +14,8 @@ templates:
 jobs:
   include:
     - os: linux
-      *build
+      <<: *build
     - os: osx
-      *build
+      <<: *build
     - os: windows
-      *build
+      <<: *build
