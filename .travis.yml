@@ -6,10 +6,13 @@ jobs:
     - os: linux
       language: java
       jdk: openjdk11
-      script: ./gradlew jvmTest
-    - script: ./gradlew linuxX64Test
+      script:
+        - ./gradlew jvmTest
+        - ./gradlew linuxX64Test
 
     - os: osx
+      language: java
+      jdk: openjdk11
       script: ./gradlew macosX64Test
 
     - os: windows
