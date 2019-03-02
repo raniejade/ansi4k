@@ -1,2 +1,2 @@
 jabba use zulu@1.11.0-2
-./gradlew --no-daemon mingwX64Test
+./gradlew --no-daemon windowsTest

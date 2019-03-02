@@ -9,12 +9,12 @@ jobs:
       jdk: openjdk11
       script:
         - ./gradlew jvmTest
-        - ./gradlew linuxX64Test
+        - ./gradlew linuxTest
 
     - os: osx
       language: java
       jdk: openjdk11
-      script: ./gradlew macosX64Test
+      script: ./gradlew macosTest
 
     - os: windows
       language: shell
