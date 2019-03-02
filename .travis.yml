@@ -19,7 +19,7 @@ jobs:
     - os: windows
       language: shell
       install:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
+        - powershell -Debug -Verbose -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
       script:
         - powershell -ExecutionPolicy Unrestricted -f "ci/check.ps1"
 
