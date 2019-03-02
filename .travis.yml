@@ -1,21 +1,27 @@
 branches:
   only: master
 
-templates:
-  build-template: &build
-    language: shell
-    before_script:
-      - curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh
-      - jabba install zulu@1.10.0-2
-      - jabba use zulu@1.10.0-2
-    script:
-      - ./gradlew check
-
 jobs:
   include:
     - os: linux
-      <<: *build
+      language: java
+      jdk: openjdk11
+      script: ./gradlew jvmTest
+    - script: ./gradlew linuxX64Test
+
     - os: osx
-      <<: *build
+      script: ./gradlew macosX64Test
+
     - os: windows
-      <<: *build
+      language: shell
+      install:
+        - powershell
+        - [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+            Invoke-Expression (
+            Invoke-WebRequest https://github.com/shyiko/jabba/raw/master/install.ps1 -UseBasicParsing
+            ).Content
+      before_script:
+        - jabba install zulu@1.11.0-2
+        - jabba use zulu@1.11.0-2
+      script: ./gradlew mingwX64Test
+
