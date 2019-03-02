@@ -64,13 +64,18 @@ publishing {
     }
 }
 
+val releaseMode = "$version".matches(Regex.fromLiteral("^\\d+\\.\\d+\\.\\d+(-rc\\.\\d+)?"))
 bintray {
     user = System.getenv("BINTRAY_USER")
     key = System.getenv("BINTRAY_API_KEY")
     dryRun = true
-    publish = false
+    publish = !releaseMode
     with(pkg) {
-        repo = "maven"
+        repo = if (releaseMode) {
+            "maven"
+        } else {
+            "maven-dev"
+        }
         desc = "Terminal colors"
         name = "termkolors"
         userOrg = "raniejade"
