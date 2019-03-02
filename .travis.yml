@@ -16,12 +16,12 @@ jobs:
       jdk: openjdk11
       script: ./gradlew macosTest
 
-    - os: windows
-      language: shell
-      install:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
-      script:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/check.ps1"
+#    - os: windows
+#      language: shell
+#      install:
+#        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
+#      script:
+#        - powershell -ExecutionPolicy Unrestricted -f "ci/check.ps1"
 
     - stage: release
       os: linux
@@ -34,12 +34,12 @@ jobs:
       jdk: openjdk11
       script: ./gradlew bintrayUpload
 
-    - os: windows
-      language: shell
-      install:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
-      script:
-        - powershell -ExecutionPolicy Unrestricted -f "ci/release.ps1"
+#    - os: windows
+#      language: shell
+#      install:
+#        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
+#      script:
+#        - powershell -ExecutionPolicy Unrestricted -f "ci/release.ps1"
 
 
 stages:
