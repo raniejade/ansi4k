@@ -18,7 +18,7 @@ jobs:
     - os: windows
       language: shell
       install:
-        - powershell -f "ci/jabba.ps1"
+        - powershell -ExecutionPolicy Unrestricted -f "ci/jabba.ps1"
       before_script:
         - jabba install zulu@1.11.0-2
         - jabba use zulu@1.11.0-2
